@@ -14,7 +14,7 @@ This app will give the user the ability to sort employees on a table by differen
 
 -Run `npm start`.
 
--Navigate to the local host listed after running the command above.
+-Navigate to the local host listed after running the command above (usually localhost:3000).
 
 
 ## Built with
