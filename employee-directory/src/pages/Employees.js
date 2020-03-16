@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import SearchBox from "../components/SearchBox";
 import Wrapper from "../components/Wrapper";
 import Header from "../components/Header";
 import EmployeeTable from "../components/EmployeeTable";
@@ -41,12 +40,11 @@ class Employees extends Component {
   render() {
     return (
         <Wrapper>
-          <Header />
-          <SearchBox
+          <Header 
             search={this.state.search}
             handleFormSubmit={this.handleFormSubmit}
             handleInputChange={this.handleInputChange}
-          />
+            />
           <EmployeeTable results={this.state.results} />
         </Wrapper>
     );

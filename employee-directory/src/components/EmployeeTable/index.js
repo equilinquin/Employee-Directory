@@ -5,7 +5,7 @@ function EmployeeTable(props) {
 
   return (
     <div className="datatable">
-      <table className="table table-striped table-hover">
+      <table className="table table-striped table-hover table-dark">
         <thead>
           <tr id="header">
             <th>Profile Picture</th>
