@@ -1,10 +1,9 @@
 import React from "react";
-import Table from "react-bootstrap/Table";
 
-function buildTable(props) {
+function BuildTable(props) {
   return (
-    <div>
-      <Table striped bordered hover>
+    <div className="datatable">
+      <table striped bordered hover>
         <thead>
           <tr>
             <th>Profile Picture</th>
@@ -21,9 +20,9 @@ function buildTable(props) {
             <td>{props.email}</td>
           </tr>
         </tbody>
-      </Table>
+      </table>
     </div>
   );
 }
 
-export default buildTable;
+export default BuildTable;
