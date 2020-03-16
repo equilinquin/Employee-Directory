@@ -1,28 +1,33 @@
 import React from "react";
+import "./style.css";
 
-function BuildTable(props) {
+function EmployeeTable(props) {
+
   return (
     <div className="datatable">
-      <table striped bordered hover>
+      <table className="table table-striped table-hover">
         <thead>
-          <tr>
+          <tr id="header">
             <th>Profile Picture</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Name</th>
+            <th>Location</th>
             <th>Email</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{props.image}</td>
-            <td>{props.firstName}</td>
-            <td>{props.lastName}</td>
-            <td>{props.email}</td>
-          </tr>
+          {props.results.map(emp => (
+            <tr key={emp.login.uuid}>
+              <td><img src={emp.picture.medium} alt="User Profile"/></td>
+              <td>{emp.name.first + " " + emp.name.last}</td>
+              <td>{emp.location.state}</td>
+              <td>{emp.email}</td>
+            </tr>
+          ))}
+          {/* <DataTable props={props}/> */}
         </tbody>
       </table>
     </div>
   );
 }
 
-export default BuildTable;
+export default EmployeeTable;

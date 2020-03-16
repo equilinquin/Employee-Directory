@@ -5,20 +5,22 @@ import Header from "../components/Header";
 import EmployeeTable from "../components/EmployeeTable";
 import API from "../utils/API";
 
-class SearchResultContainer extends Component {
+class Employees extends Component {
   state = {
     search: "",
     results: []
   };
 
-  // When this component mounts, search the Giphy API for pictures of kittens
+
   componentDidMount() {
     this.searchEmployees();
   }
 
   searchEmployees = query => {
-    API.search(query)
-      .then(res => this.setState({ results: res.results }))
+  
+    API.employeeList(query)
+      .then(res =>
+        this.setState({ results: res.data.results }))
       .catch(err => console.log(err));
   };
 
@@ -51,4 +53,4 @@ class SearchResultContainer extends Component {
   }
 }
 
-export default SearchResultContainer;
+export default Employees;
