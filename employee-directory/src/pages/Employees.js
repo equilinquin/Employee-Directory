@@ -6,60 +6,67 @@ import API from "../utils/API";
 
 class Employees extends Component {
   state = {
-    searchArr: [],
-    userName: [],
-    sorted: 'asc'
+    SearchArr: [],
+    users: [],
+    sorted: "asc"
   };
-
 
   componentDidMount() {
     this.searchEmployees();
   }
 
   searchEmployees = query => {
-  
     API.employeeList(query)
-      .then(res =>
-        this.setState({ users: res.data.results }))
+      .then(res => this.setState({ users: res.data.results, searchArr: res.data.results }))
       .catch(err => console.log(err));
   };
 
-  handleInputChange = event => {
-    const name = event.target.name; 
-    const value = event.target.value;
-    this.setState({
-      [name] : value
-    });
-  };
+  // handleInputChange = event => {
+  //   const filter = event.target.value;
+  //   const filterUsers = this.state.users.filter(item => {
+  //     let values = Object.values(item)
+  //       .join("")
+  //       .toLowerCase();
+  //     return values.indexOf(filter.toLowerCase()) !== -1;
+  //   });
+  //   this.setState({ searchArr: filterUsers });
+  // };
 
   // When the form is submitted, search the Giphy API for `this.state.search`
   handleFormSubmit = event => {
-    event.preventDefault();
-    this.searchEmployees(this.state.search);
+    const filter = event.target.value;
+    const filterUsers = this.state.users.filter(item => {
+      let values = Object.values(item)
+        .join("")
+        .toLowerCase();
+      return values.indexOf(filter.toLowerCase()) !== -1;
+    });
+    this.setState({ searchArr: filterUsers });
   };
 
   handleSort = event => {
     event.preventDefault();
-    const user = this.state.users
-    console.log(user);
-  //   user.sort(function(a, b){
-  //     if(a.firstname < b.firstname) { return -1; }
-  //     if(a.firstname > b.firstname) { return 1; }
-  //     return 0;
-  // })
-  }
+    const user = this.state.users;
+      user.sort(function(a, b){
+        if(a.name < b.name) { return -1; }
+        if(a.name > b.name) { return 1; }
+        return 0;
+    })
+  };
 
   render() {
     return (
-        <Wrapper>
-          <Header 
-            search={this.state.search}
-            handleFormSubmit={this.handleFormSubmit}
-            handleInputChange={this.handleInputChange}
-            handleSort={this.handleSort}
-            />
-          <EmployeeTable results={this.state.users} />
-        </Wrapper>
+      <Wrapper>
+        <Header
+          searchArr={this.state.searchArr}
+          handleFormSubmit={this.handleFormSubmit}
+          //handleInputChange={this.handleInputChange}
+          handleSort={this.handleSort}
+        />
+        <EmployeeTable 
+          users={this.state.users}
+        />
+      </Wrapper>
     );
   }
 }
