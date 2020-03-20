@@ -2,3 +2,7 @@ table {
     width: 90%;
     text-align: center;
 }
+th,
+td {
+    font-family: 'Noto Serif', sans-serif;
+}

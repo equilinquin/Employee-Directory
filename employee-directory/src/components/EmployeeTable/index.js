@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import TableBody from "../TableBody";
 
 function EmployeeTable(props) {
 
@@ -16,14 +17,14 @@ function EmployeeTable(props) {
         </thead>
         <tbody>
           {props.results.map(emp => (
-            <tr key={emp.login.uuid}>
-              <td><img src={emp.picture.medium} alt="User Profile"/></td>
-              <td>{emp.name.first + " " + emp.name.last}</td>
-              <td>{emp.location.state}</td>
-              <td>{emp.email}</td>
-            </tr>
+            <TableBody
+              key={emp.login.uuid}
+              image={emp.picture.medium}
+              name={emp.name.first + " " + emp.name.last}
+              location={emp.location.state}
+              email={emp.email}
+               />
           ))}
-          {/* <DataTable props={props}/> */}
         </tbody>
       </table>
     </div>

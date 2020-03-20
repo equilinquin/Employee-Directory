@@ -6,8 +6,9 @@ import API from "../utils/API";
 
 class Employees extends Component {
   state = {
-    search: "",
-    results: []
+    searchArr: [],
+    userName: [],
+    sorted: 'asc'
   };
 
 
@@ -19,23 +20,34 @@ class Employees extends Component {
   
     API.employeeList(query)
       .then(res =>
-        this.setState({ results: res.data.results }))
+        this.setState({ users: res.data.results }))
       .catch(err => console.log(err));
   };
 
   handleInputChange = event => {
-    const name = event.target.name;
+    const name = event.target.name; 
     const value = event.target.value;
     this.setState({
-      [name]: value
+      [name] : value
     });
   };
 
   // When the form is submitted, search the Giphy API for `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
-    this.searchGiphy(this.state.search);
+    this.searchEmployees(this.state.search);
   };
+
+  handleSort = event => {
+    event.preventDefault();
+    const user = this.state.users
+    console.log(user);
+  //   user.sort(function(a, b){
+  //     if(a.firstname < b.firstname) { return -1; }
+  //     if(a.firstname > b.firstname) { return 1; }
+  //     return 0;
+  // })
+  }
 
   render() {
     return (
@@ -44,8 +56,9 @@ class Employees extends Component {
             search={this.state.search}
             handleFormSubmit={this.handleFormSubmit}
             handleInputChange={this.handleInputChange}
+            handleSort={this.handleSort}
             />
-          <EmployeeTable results={this.state.results} />
+          <EmployeeTable results={this.state.users} />
         </Wrapper>
     );
   }

@@ -19,13 +19,21 @@ function Header(props) {
             id="search"
           />
           <button
-            onClick={props.handleFormSubmit}
-            className="btn btn-primary input-group-append"
+            onClick={e => props.handleFormSubmit(e)}
+            className="btn btn-primary input-group-append submit"
           >
             Search
           </button>
         </div>
       </form>
+      <div id="sortby">
+       <h3>Sort By: </h3>
+        <button className="sortBy" onClick={props.handleFormSubmit}>Name</button>
+        &nbsp;&nbsp;&nbsp;
+        <button className="sortBy" onClick={props.handleFormSubmit}>Email</button>
+        &nbsp;&nbsp;&nbsp;
+        <button className="sortBy" onClick={props.handleFormSubmit}>Location</button>
+      </div>
     </div>
   );
 }
