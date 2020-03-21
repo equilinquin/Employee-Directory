@@ -1,13 +1,13 @@
 import React from "react";
 import "./style.css";
 
-function SearchBox(props) {
+function SearchBox({ handleInputChange, handleFormSubmit, handleSort}) {
   return (
     <div>
     <form>
         <div className="form-group input-group">
           <input
-            //onChange={e => props.handleInputChange(e)}
+            onChange={e => handleInputChange(e)}
             name="search"
             type="text"
             className="form-control"
@@ -15,8 +15,9 @@ function SearchBox(props) {
             id="search"
           />
           <button
-            onClick={e => props.handleFormSubmit(e)}
+            onClick={e => handleFormSubmit(e)}
             className="btn btn-primary input-group-append submit"
+            value="Hawaii Rocks"
           >
             Search
           </button>
@@ -24,11 +25,11 @@ function SearchBox(props) {
       </form>
       <div id="sortby">
        <h3>Sort By: </h3>
-        <button className="sortBy" onClick={e => props.handleSort(e)}>Name</button>
+        <button className="sortBy" name="firstname" onClick={e => handleSort(e)}>Name</button>
         &nbsp;&nbsp;&nbsp;
-        <button className="sortBy" onClick={e => props.handleSort(e)}>Email</button>
+        <button className="sortBy" name="email" onClick={e => handleSort(e)}>Email</button>
         &nbsp;&nbsp;&nbsp;
-        <button className="sortBy" onClick={e => props.handlesort(e)}>Location</button>
+        <button className="sortBy" name="location" onClick={e => handleSort(e)}>Location</button>
       </div>
     </div>
   )

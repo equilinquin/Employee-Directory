@@ -17,11 +17,11 @@ function EmployeeTable(props) {
         <tbody>
           {props.users.map(emp => (
             <TableBody 
-              login={props.login.uuid}
-              image={props.picture.medium}
-              name={props.name.first + " " + props.name.last}
-              location={props.location.state}
-              email={props.email}
+              key={emp.login.uuid}
+              image={emp.picture.medium}
+              name={emp.name.first + " " + emp.name.last}
+              location={emp.location.state}
+              email={emp.email}
             />
           ))}
         </tbody>

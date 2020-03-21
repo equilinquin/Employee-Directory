@@ -3,7 +3,7 @@ import "./style.css";
 
 function TableBody(props) {
   return (
-    <tr key={props.login}>
+    <tr>
       <td>
         <img src={props.image} alt="User Profile" />
       </td>

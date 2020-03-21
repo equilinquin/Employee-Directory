@@ -9,8 +9,9 @@ function Header(props) {
       <h3>Search for employee by name or location, or use the search bar</h3>
       <br />
       <SearchBox 
-        //handleInputChange={props.handleInputChange}
+        handleInputChange={props.handleInputChange}
         handleFormSubmit={props.handleFormSubmit}
+        handleSort={props.handleSort}
         />
     </div>
   );
