@@ -25,11 +25,9 @@ function SearchBox({ handleInputChange, handleFormSubmit, handleSort}) {
       </form>
       <div id="sortby">
        <h3>Sort By: </h3>
-        <button className="sortBy" name="firstname" onClick={e => handleSort(e)}>Name</button>
+        <button className="sortBy btn btn-primary" name="firstname" onClick={e => handleSort(e)}>Name</button>
         &nbsp;&nbsp;&nbsp;
-        <button className="sortBy" name="email" onClick={e => handleSort(e)}>Email</button>
-        &nbsp;&nbsp;&nbsp;
-        <button className="sortBy" name="location" onClick={e => handleSort(e)}>Location</button>
+        <button className="sortBy btn btn-primary" name="location" onClick={e => handleSort(e)}>Location</button>
       </div>
     </div>
   )
